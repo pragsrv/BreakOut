@@ -3,26 +3,93 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Breakout Game - Final Edition</title>
+  <title>Breakout Nexus - Modern Edition</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="startScreen">
-    <h1 style="font-size: 36px;">🎮 Breakout - Final Edition</h1>
-    <input type="text" id="username" placeholder="Enter your name" />
-    <br>
-    <button onclick="startGame()">Start Game</button>
+  <!-- Background Particles -->
+  <div class="bg-particles" id="particles"></div>
+
+  <!-- Start Screen -->
+  <div class="screen active" id="startScreen">
+    <div class="start-screen">
+      <h1 class="game-title">BREAKOUT NEXUS</h1>
+      <p class="game-subtitle">Ultra Modern Edition</p>
+      
+      <div class="input-group">
+        <input type="text" class="player-input" id="playerName" placeholder="Enter your codename" maxlength="15">
+      </div>
+      
+      <div class="difficulty-selector">
+        <button class="difficulty-btn selected" data-difficulty="easy">Rookie</button>
+        <button class="difficulty-btn" data-difficulty="medium">Veteran</button>
+        <button class="difficulty-btn" data-difficulty="hard">Elite</button>
+      </div>
+      
+      <button class="start-btn" onclick="initGame()">Launch Game</button>
+    </div>
   </div>
 
-  <div id="gameUI" style="display:none;">
-    <canvas id="gameCanvas" width="480" height="320"></canvas>
-    <p id="info"></p>
-    <p id="mission"></p>
+  <!-- Game Screen -->
+  <div class="screen" id="gameScreen">
+    <div class="game-container">
+      <div class="game-header">
+        <div class="stat-item">
+          <span class="stat-label">Player</span>
+          <span class="stat-value" id="playerDisplay">NEXUS</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Score</span>
+          <span class="stat-value" id="scoreDisplay">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Level</span>
+          <span class="stat-value" id="levelDisplay">1</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Lives</span>
+          <div class="lives-container" id="livesDisplay"></div>
+        </div>
+      </div>
+      
+      <canvas class="game-canvas" id="gameCanvas" width="800" height="500"></canvas>
+      
+      <div class="power-ups">
+        <div class="power-up" id="multiballPower">⚡ Multi-Ball</div>
+        <div class="power-up" id="bigPaddlePower">🛡️ Big Paddle</div>
+        <div class="power-up" id="slowmoPower">⏱️ Slow Motion</div>
+      </div>
+      
+      <div class="controls-hint">
+        🎮 Use ← → Arrow Keys or A/D • SPACE to Pause • R to Reset
+      </div>
+    </div>
   </div>
 
-  <div id="endScreen" style="display:none;">
-    <h2 id="endMessage"></h2>
-    <button onclick="document.location.reload()">🔁 Play Again</button>
+  <!-- End Screen -->
+  <div class="screen" id="endScreen">
+    <div class="end-screen">
+      <h2 class="end-title" id="endTitle">MISSION COMPLETE</h2>
+      <div class="final-stats">
+        <div class="final-stat">
+          <div class="stat-label">Final Score</div>
+          <div class="stat-value" id="finalScore">0</div>
+        </div>
+        <div class="final-stat">
+          <div class="stat-label">Levels Cleared</div>
+          <div class="stat-value" id="levelsCleared">0</div>
+        </div>
+        <div class="final-stat">
+          <div class="stat-label">Accuracy</div>
+          <div class="stat-value" id="accuracy">0%</div>
+        </div>
+        <div class="final-stat">
+          <div class="stat-label">Play Time</div>
+          <div class="stat-value" id="playTime">0:00</div>
+        </div>
+      </div>
+      <button class="restart-btn" onclick="restartGame()">⚡ Play Again</button>
+    </div>
   </div>
 
   <script src="script.js"></script>
