@@ -2,12 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Breakout Game</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Breakout Game - Final Edition</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <canvas id="gameCanvas" width="480" height="320"></canvas>
+  <div id="startScreen">
+    <h1 style="font-size: 36px;">🎮 Breakout - Final Edition</h1>
+    <input type="text" id="username" placeholder="Enter your name" />
+    <br>
+    <button onclick="startGame()">Start Game</button>
+  </div>
+
+  <div id="gameUI" style="display:none;">
+    <canvas id="gameCanvas" width="480" height="320"></canvas>
+    <p id="info"></p>
+    <p id="mission"></p>
+  </div>
+
+  <div id="endScreen" style="display:none;">
+    <h2 id="endMessage"></h2>
+    <button onclick="document.location.reload()">🔁 Play Again</button>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
